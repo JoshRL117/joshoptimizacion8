@@ -1,4 +1,4 @@
-from optimizador_joshua_2 import (
+from optimizador_joshua_8 import (
     objetive_function, restriction_functions, univariablefunction, 
     cauchy, fletcher_reeves, hooke_jeeves, neldermead, newton, random_walk,
     biseccion, fibonacci, goldensearch, interval, newton_raphson, secante
@@ -6,12 +6,12 @@ from optimizador_joshua_2 import (
 
 # Prueba de uso de las funciones y clases importadas
 import numpy as np
-from optimizador_joshua_2.metodos_multivariables.cauchy import cauchy
-from optimizador_joshua_2.metodos_multivariables.newtonmethod import newton
-from optimizador_joshua_2.metodos_multivariables.fletcherreeves import fletcher_reeves
-from optimizador_joshua_2.metodos_multivariables.hookejeeves import hooke_jeeves
-from optimizador_joshua_2.funciones.objetivo import objetive_function
-from optimizador_joshua_2.metodos_multivariables.neldermead import neldermead
+from optimizador_joshua_8.metodos_multivariables.cauchy import cauchy
+from optimizador_joshua_8.metodos_multivariables.newtonmethod import newton
+from optimizador_joshua_8.metodos_multivariables.fletcherreeves import fletcher_reeves
+from optimizador_joshua_8.metodos_multivariables.hookejeeves import hooke_jeeves
+from optimizador_joshua_8.funciones.objetivo import objetive_function
+from optimizador_joshua_8.metodos_multivariables.neldermead import neldermead
 
 # Definir el nombre de la función objetivo y el espacio de búsqueda
 func_name = "himmelblau"

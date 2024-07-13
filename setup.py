@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='optimizador_joshua_2',
+    name='optimizador_joshua_3',
     version='0.1',
     author="Joshua Rodriguez",
     author_email="joshuarl03@hotmail.com",
