@@ -663,99 +663,100 @@ Método de biseccion
     print(f"El mínimo aproximado de la función es: {resultado}")
     Método de Fibonacci
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: python
         class fibonacci(by_regions_elimination):
-        def __init__(self, x_inicial, x_limite, f, iter=100):
-            """
-            Inicializa el método de optimización Fibonacci con el punto inicial, el límite de búsqueda, la función objetivo y el número máximo de iteraciones.
+            def __init__(self, x_inicial, x_limite, f, iter=100):
+                """
+                Inicializa el método de optimización Fibonacci con el punto inicial, el límite de búsqueda, la función objetivo y el número máximo de iteraciones.
 
-            Parámetros:
-            - x_inicial (float): Punto inicial para la búsqueda.
-            - x_limite (float): Límite superior del intervalo de búsqueda.
-            - f (function or funcion): Función a optimizar. Puede ser una función ordinaria o un objeto de la clase 'funcion'.
-            - iter (int, opcional): Número máximo de iteraciones (predeterminado: 100).
-            """
-            super().__init__(x_inicial, x_limite, f, iter)
+                Parámetros:
+                - x_inicial (float): Punto inicial para la búsqueda.
+                - x_limite (float): Límite superior del intervalo de búsqueda.
+                - f (function or funcion): Función a optimizar. Puede ser una función ordinaria o un objeto de la clase 'funcion'.
+                - iter (int, opcional): Número máximo de iteraciones (predeterminado: 100).
+                """
+                super().__init__(x_inicial, x_limite, f, iter)
 
-        def findregions(self, rangomin, rangomax, x1, x2):
-            """
-            Encuentra las regiones mínima y máxima basadas en la evaluación de dos puntos.
+            def findregions(self, rangomin, rangomax, x1, x2):
+                """
+                Encuentra las regiones mínima y máxima basadas en la evaluación de dos puntos.
 
-            Parámetros:
-            - rangomin (float): Límite inferior de la región.
-            - rangomax (float): Límite superior de la región.
-            - x1 (float): Primer punto a evaluar.
-            - x2 (float): Segundo punto a evaluar.
+                Parámetros:
+                - rangomin (float): Límite inferior de la región.
+                - rangomax (float): Límite superior de la región.
+                - x1 (float): Primer punto a evaluar.
+                - x2 (float): Segundo punto a evaluar.
 
-            Retorna:
-            - float, float: Nuevos límites de región (rangomin, rangomax).
-            """
-            if self.funcion(x1) > self.funcion(x2):
-                rangomin = rangomin
-                rangomax = x2
-            elif self.funcion(x1) < self.funcion(x2):
-                rangomin = x1
-                rangomax = rangomax
-            elif self.funcion(x1) == self.funcion(x2):
-                rangomin = x1
-                rangomax = x2
-            return rangomin, rangomax
+                Retorna:
+                - float, float: Nuevos límites de región (rangomin, rangomax).
+                """
+                if self.funcion(x1) > self.funcion(x2):
+                    rangomin = rangomin
+                    rangomax = x2
+                elif self.funcion(x1) < self.funcion(x2):
+                    rangomin = x1
+                    rangomax = rangomax
+                elif self.funcion(x1) == self.funcion(x2):
+                    rangomin = x1
+                    rangomax = x2
+                return rangomin, rangomax
 
-        def fibonacci_iterativo(self, n):
-            """
-            Genera una secuencia iterativa de números Fibonacci hasta el enésimo término.
+            def fibonacci_iterativo(self, n):
+                """
+                Genera una secuencia iterativa de números Fibonacci hasta el enésimo término.
 
-            Parámetros:
-            - n (int): Número de términos Fibonacci a generar.
+                Parámetros:
+                - n (int): Número de términos Fibonacci a generar.
 
-            Retorna:
-            - list: Lista de números Fibonacci generados.
-            """
-            fibonacci = [0, 1]
-            for i in range(2, n):
-                fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])
-            return fibonacci
+                Retorna:
+                - list: Lista de números Fibonacci generados.
+                """
+                fibonacci = [0, 1]
+                for i in range(2, n):
+                    fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])
+                return fibonacci
 
-        def calculo_lk(self, fibonacci, n, k):
-            """
-            Calcula el valor de L_k usando la secuencia Fibonacci para el método.
+            def calculo_lk(self, fibonacci, n, k):
+                """
+                Calcula el valor de L_k usando la secuencia Fibonacci para el método.
 
-            Parámetros:
-            - fibonacci (list): Secuencia Fibonacci generada.
-            - n (int): Número de términos Fibonacci generados.
-            - k (int): Índice k para calcular L_k.
+                Parámetros:
+                - fibonacci (list): Secuencia Fibonacci generada.
+                - n (int): Número de términos Fibonacci generados.
+                - k (int): Índice k para calcular L_k.
 
-            Retorna:
-            - float: Valor calculado de L_k.
-            """
-            indice1 = n - (k + 1)
-            indice2 = n + 1
-            return fibonacci[indice1] / fibonacci[indice2]
+                Retorna:
+                - float: Valor calculado de L_k.
+                """
+                indice1 = n - (k + 1)
+                indice2 = n + 1
+                return fibonacci[indice1] / fibonacci[indice2]
 
-        def optimize(self):
-            """
-            Es el metodo principal de clase para optimizar
+            def optimize(self):
+                """
+                Es el metodo principal de clase para optimizar
 
-            Retorna:
-            - float: Punto óptimo encontrado.
-            """
-            a, b = self.valor_inicial, self.limite
-            n = self.iteraciones
-            l = b - a
-            serie_fibonacci = self.fibonacci_iterativo(n * 10)
-            k = 2
-            lk = self.calculo_lk(serie_fibonacci, n, k)
-            x1 = a + lk
-            x2 = b - lk
-            while k != n:
-                if k % 2 == 0:
-                    evalx1 = self.funcion(x1)
-                    a, b = self.findregions(a, b, evalx1, x2)
-                else:
-                    evalx2 = self.funcion(x2)
-                    a, b = self.findregions(a, b, x1, evalx2)
-                k += 1
-            return (a + b) / 2
+                Retorna:
+                - float: Punto óptimo encontrado.
+                """
+                a, b = self.valor_inicial, self.limite
+                n = self.iteraciones
+                l = b - a
+                serie_fibonacci = self.fibonacci_iterativo(n * 10)
+                k = 2
+                lk = self.calculo_lk(serie_fibonacci, n, k)
+                x1 = a + lk
+                x2 = b - lk
+                while k != n:
+                    if k % 2 == 0:
+                        evalx1 = self.funcion(x1)
+                        a, b = self.findregions(a, b, evalx1, x2)
+                    else:
+                        evalx2 = self.funcion(x2)
+                        a, b = self.findregions(a, b, x1, evalx2)
+                    k += 1
+                return (a + b) / 2
 
 
 
