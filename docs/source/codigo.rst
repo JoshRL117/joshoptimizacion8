@@ -383,6 +383,7 @@ Esta es la clase hereada enfocada a las funciones con restricciones
 
 Clase univariablefunction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Estas son las funciones univariables 
 .. code-block:: python
         class univariablefunction(funcion):
             def __init__(self, name, espaciobussqueda: np.array=[0,0]):
