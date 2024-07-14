@@ -598,10 +598,6 @@ Clase univariablefunction
             if func is None:
                 raise ValueError(f"La función '{self.name}' no está definida en la clase.")
             return func
-
-
-
-
 .. code-block:: python
     import numpy as np
     from .univariablefunction import univariablefunction
