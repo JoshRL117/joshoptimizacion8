@@ -113,6 +113,181 @@ Clase objetive_funcion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Esta es la clase heredada que se enfoca en funciones objetivo de prueba para el paquete.
 
+.. code-block:: python
+
+    import numpy as np
+
+    class objetive_function(funcion):
+        """
+        Clase para definir varias funciones objetivo de optimización.
+
+        Methods:
+            himmelblau: Función de Himmelblau. Este es nombre que se debe de poner para acceder a la funcion
+            sphere: Función de Sphere.Este es nombre que se debe de poner para acceder a la funcion
+            rastrigin: Función de Rastrigin.Este es nombre que se debe de poner para acceder a la funcion
+            rosenbrock: Función de Rosenbrock.Este es nombre que se debe de poner para acceder a la funcion
+            beale: Función de Beale.Este es nombre que se debe de poner para acceder a la funcion
+            goldstein: Función de Goldstein-Price.Este es nombre que se debe de poner para acceder a la funcion
+            booth: Función de Booth.Este es nombre que se debe de poner para acceder a la funcion
+            bunkinn6: Función de Bukin N.6.Este es nombre que se debe de poner para acceder a la funcion
+            matyas: Función de Matyas.Este es nombre que se debe de poner para acceder a la funcion
+            levi: Función de Levi.Este es nombre que se debe de poner para acceder a la funcion
+            threehumpcamel: Función de Three-Hump Camel.Este es nombre que se debe de poner para acceder a la funcion
+            easom: Función de Easom.Este es nombre que se debe de poner para acceder a la funcion
+            crossintray: Función de Cross-in-Tray.Este es nombre que se debe de poner para acceder a la funcion
+            eggholder: Función de Eggholder.Este es nombre que se debe de poner para acceder a la funcion
+            holdertable: Función de Holder Table.Este es nombre que se debe de poner para acceder a la funcion
+            mccormick: Función de McCormick.Este es nombre que se debe de poner para acceder a la funcion
+            schaffern2: Función de Schaffer N.2.Este es nombre que se debe de poner para acceder a la funcion
+            schaffern4: Función de Schaffer N.4.Este es nombre que se debe de poner para acceder a la funcion
+            styblinskitan: Función de Styblinski-Tang.Este es nombre que se debe de poner para acceder a la funcion
+            shekel: Función de Shekel.Este es nombre que se debe de poner para acceder a la funcion
+        """
+
+        def __init__(self, name, espaciobussqueda: np.array=[[0,0],[1,1]]):
+            """
+            Inicializa la clase con el nombre de la función y el espacio de búsqueda.
+
+            Args:
+                name (str): Nombre de la función.
+                espaciobussqueda (np.array): Espacio de búsqueda definido por los límites inferior y superior.
+            """
+            super().__init__(name, espaciobussqueda)
+
+        def himmelblau(self, p):
+            """Función de Himmelblau."""
+            return (p[0]**2 + p[1] - 11)**2 + (p[0] + p[1]**2 - 7)**2
+
+        def sphere(self, x):
+            """Función de Sphere."""
+            return np.sum(np.square(x))
+
+        def rastrigin(self, x, A=10):
+            """Función de Rastrigin."""
+            self.limite = float(5.12)
+            n = len(x)
+            return A * n + np.sum(x**2 - A * np.cos(2 * np.pi * x))
+
+        def rosenbrock(self, x):
+            """Función de Rosenbrock."""
+            return np.sum(100 * (x[1:] - x[:-1]**2)**2 + (1 - x[:-1])**2)
+
+        def beale(self, x):
+            """Función de Beale."""
+            self.limite = 4.5
+            return ((1.5 - x[0] + x[0] * x[1])**2 +
+                    (2.25 - x[0] + x[0] * x[1]**2)**2 +
+                    (2.625 - x[0] + x[0] * x[1]**3)**2)
+
+        def goldstein(self, x):
+            """Función de Goldstein-Price."""
+            self.limite = 2
+            part1 = (1 + (x[0] + x[1] + 1)**2 * 
+                     (19 - 14 * x[0] + 3 * x[0]**2 - 14 * x[1] + 6 * x[0] * x[1] + 3 * x[1]**2))
+            part2 = (30 + (2 * x[0] - 3 * x[1])**2 * 
+                     (18 - 32 * x[0] + 12 * x[0]**2 + 48 * x[1] - 36 * x[0] * x[1] + 27 * x[1]**2))
+            return part1 * part2
+
+        def booth(self, x):
+            """Función de Booth."""
+            self.limite = 10
+            return (x[0] + 2 * x[1] - 7)**2 + (2 * x[0] + x[1] - 5)**2
+
+        def bunkinn6(self, x):
+            """Función de Bukin N.6."""
+            return 100 * np.sqrt(np.abs(x[1] - 0.001 * x[0]**2)) + 0.01 * np.abs(x[0] + 10)
+
+        def matyas(self, x):
+            """Función de Matyas."""
+            return 0.26 * (x[0]**2 + x[1]**2) - 0.48 * x[0] * x[1]
+
+        def levi(self, x):
+            """Función de Levi."""
+            part1 = np.sin(3 * np.pi * x[0])**2
+            part2 = (x[0] - 1)**2 * (1 + np.sin(3 * np.pi * x[1])**2)
+            part3 = (x[1] - 1)**2 * (1 + np.sin(2 * np.pi * x[1])**2)
+            return part1 + part2 + part3
+
+        def threehumpcamel(self, x):
+            """Función de Three-Hump Camel."""
+            return 2 * x[0]**2 - 1.05 * x[0]**4 + (x[0]**6) / 6 + x[0] * x[1] + x[1]**2
+
+        def easom(self, x):
+            """Función de Easom."""
+            return -np.cos(x[0]) * np.cos(x[1]) * np.exp(-(x[0] - np.pi)**2 - (x[1] - np.pi)**2)
+
+        def crossintray(self, x):
+            """Función de Cross-in-Tray."""
+            op = np.abs(np.sin(x[0]) * np.sin(x[1]) * np.exp(np.abs(100 - np.sqrt(x[0]**2 + x[1]**2) / np.pi)))
+            return -0.0001 * (op + 1)**0.1
+
+        def eggholder(self, x):
+            """Función de Eggholder."""
+            op1 = -(x[1] + 47) * np.sin(np.sqrt(np.abs(x[0] / 2 + (x[1] + 47))))
+            op2 = -x[0] * np.sin(np.sqrt(np.abs(x[0] - (x[1] + 47))))
+            return op1 + op2
+
+        def holdertable(self, x):
+            """Función de Holder Table."""
+            op = np.abs(np.sin(x[0]) * np.cos(x[1]) * np.exp(np.abs(1 - np.sqrt(x[0]**2 + x[1]**2) / np.pi)))
+            return -op
+
+        def mccormick(self, x):
+            """Función de McCormick."""
+            return np.sin(x[0] + x[1]) + (x[0] - x[1])**2 - 1.5 * x[0] + 2.5 * x[1] + 1
+
+        def schaffern2(self, x):
+            """Función de Schaffer N.2."""
+            self.limite = 100
+            numerator = np.sin(x[0]**2 - x[1]**2)**2 - 0.5
+            denominator = (1 + 0.001 * (x[0]**2 + x[1]**2))**2
+            return 0.5 + numerator / denominator
+
+        def schaffern4(self, x):
+            """Función de Schaffer N.4."""
+            self.limite = 100
+            numerator = np.cos(np.sin(np.abs(x[0]**2 - x[1]**2)))**2 - 0.5
+            denominator = (1 + 0.001 * (x[0]**2 + x[1]**2))**2
+            return 0.5 + numerator / denominator
+
+        def styblinskitan(self, x):
+            """Función de Styblinski-Tang."""
+            return np.sum(x**4 - 16 * x**2 + 5 * x) / 2
+
+        def shekel(self, x):
+            """Función de Shekel."""
+            a = np.array([[4, 4, 4, 4],
+                          [1, 1, 1, 1],
+                          [8, 8, 8, 8],
+                          [6, 6, 6, 6],
+                          [3, 7, 3, 7]])
+            c = np.array([0.1, 0.2, 0.2, 0.4, 0.4])
+            s = 0
+            for j in range(5):
+                s += 1 / (np.dot((x - a[j]), (x - a[j])) + c[j])
+            return -s
+
+**Ejemplo**
+
+.. code-block:: python
+
+    import numpy as np
+    from optimizador_joshua_8.funciones.objetivo import objetive_function
+
+    # Definir el nombre de la función objetivo y el espacio de búsqueda
+    func_name = "himmelblau"
+    espaciobusqueda = np.array([[0, 0], [1, 1]])
+
+    # Crear una instancia de la clase objetive_function
+    obj_func = objetive_function(func_name, espaciobusqueda)
+    print("Límite inferior del espacio de búsqueda:", obj_func.get_limiteinf())
+    print("Límite superior del espacio de búsqueda:", obj_func.get_limitesup())
+
+    # Obtener la función objetivo y calcular su valor en un punto específico
+    f = obj_func.get_function()
+    resultado = f([3, 2])
+    print(f"Valor de la función {func_name} en [3, 2]:", resultado)
+    
 Clase restriction_functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: python
@@ -134,7 +309,6 @@ Clase restriction_functions
             simionescu_function
             simionescu_function_restriction
             """
-
         def rosenbrock_constrained_cubic_line(self, x):
             """
             Calcula la función Rosenbrock con restricción de línea cúbica.
@@ -158,7 +332,7 @@ Clase restriction_functions
             - bool: True si la restricción se cumple, False en caso contrario.
             """
             return (((x[0] - 1)**3 - x[1] + 1)) >= 0 and (x[0] + x[1] - 2) <= 0
-
+            
         def rosenbrock_constrained_disk(self, x):
             """
             Calcula la función Rosenbrock con restricción de disco.
@@ -320,234 +494,6 @@ Clase restriction_functions
             - float: Límite inferior del espacio de búsqueda.
             """
             return self.limitesup[1]
-
-**Ejemplo**
-
-.. code-block:: python
-
-    import numpy as np
-    from optimizador_joshua_8.funciones.objetivo import objetive_function
-
-    # Definir el nombre de la función objetivo y el espacio de búsqueda
-    func_name = "himmelblau"
-    espaciobusqueda = np.array([[0, 0], [1, 1]])
-
-    # Crear una instancia de la clase objetive_function
-    obj_func = objetive_function(func_name, espaciobusqueda)
-    print("Límite inferior del espacio de búsqueda:", obj_func.get_limiteinf())
-    print("Límite superior del espacio de búsqueda:", obj_func.get_limitesup())
-
-    # Obtener la función objetivo y calcular su valor en un punto específico
-    f = obj_func.get_function()
-    resultado = f([3, 2])
-    print(f"Valor de la función {func_name} en [3, 2]:", resultado)
-    
-Clase restriction_functions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: python
-    class restriction_functions(funcion):
-    def __init__(self, name, espaciobusqueda: np.array):
-        super().__init__(name, espaciobusqueda)
-        """
-        Estos son los nombres de las funciones que se debe poner en name para llamarlas
-        rosenbrock_constrained_cubic_line
-        rosenbrock_constrained_cubic_line_restriction
-        rosenbrock_constrained_disk
-        rosenbrock_constrained_disk_restriction
-        mishras_bird_constrained
-        mishras_bird_constrained_restriction
-        townsend_function_modified
-        townsend_function_modified_restriction
-        gomez_levy_function_modified
-        gomez_levy_function_modified_restriction
-        simionescu_function
-        simionescu_function_restriction
-        """
-    def rosenbrock_constrained_cubic_line(self, x):
-        """
-        Calcula la función Rosenbrock con restricción de línea cúbica.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - np.array: Valor de la función evaluada en x.
-        """
-        return np.array([(1 - x[0])**2 + 100 * (x[1] - (x[0]**2))**2])
-
-    def rosenbrock_constrained_cubic_line_restriction(self, x):
-        """
-        Verifica la restricción para la función Rosenbrock con restricción de línea cúbica.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - bool: True si la restricción se cumple, False en caso contrario.
-        """
-        return (((x[0] - 1)**3 - x[1] + 1)) >= 0 and (x[0] + x[1] - 2) <= 0
-        
-    def rosenbrock_constrained_disk(self, x):
-        """
-        Calcula la función Rosenbrock con restricción de disco.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - np.array: Valor de la función evaluada en x.
-        """
-        return np.array([(1 - x[0])**2 + 100 * (x[1] - (x[0]**2))**2])
-
-    def rosenbrock_constrained_disk_restriction(self, x):
-        """
-        Verifica la restricción para la función Rosenbrock con restricción de disco.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - bool: True si la restricción se cumple, False en caso contrario.
-        """
-        return (x[0]**2 + x[1]**2)
-
-    def mishras_bird_constrained(self, x):
-        """
-        Calcula la función de Mishra's Bird con restricción.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - float: Valor de la función evaluada en x.
-        """
-        return np.sin(x[1]) * np.exp((1 - np.cos(x[0]))**2) + np.cos(x[0]) * np.exp((1 - np.sin(x[1]))**2) + (x[0] - x[1])**2
-
-    def mishras_bird_constrained_restriction(self, x):
-        """
-        Verifica la restricción para la función de Mishra's Bird con restricción.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - bool: True si la restricción se cumple, False en caso contrario.
-        """
-        return (x[0] + 5)**2 + (x[1] + 5)**2 < 25
-
-    def townsend_function_modified(self, x):
-        """
-        Calcula la función Townsend modificada.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - float: Valor de la función evaluada en x.
-        """
-        return -(np.cos((x[0] - 0.1) * x[1]))**2 - x[0] * np.sin(3 * x[0] + x[1])
-
-    def townsend_function_modified_restriction(self, x):
-        """
-        Verifica la restricción para la función Townsend modificada.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - bool: True si la restricción se cumple, False en caso contrario.
-        """
-        t = np.arctan2(x[1], x[0])
-        op1 = x[0]**2 + x[1]**2
-        op2 = (2 * np.cos(t) - 0.5 * np.cos(2 * t) - 0.25 * np.cos(3 * t) - 0.125 * np.cos(4 * t))**2 + (2 * np.sin(t))**2
-        return op1 < op2
-
-    def gomez_levy_function_modified(self, x):
-        """
-        Calcula la función Gomez-Levy modificada.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - float: Valor de la función evaluada en x.
-        """
-        return 4 * x[0]**2 - 2.1 * x[0]**4 + (1 / 3) * x[0]**6 + x[0] * x[1] - 4 * x[1]**2 + 4 * x[1]**4
-
-    def gomez_levy_function_modified_restriction(self, x):
-        """
-        Verifica la restricción para la función Gomez-Levy modificada.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - bool: True si la restricción se cumple, False en caso contrario.
-        """
-        return -np.sin(4 * np.pi * x[0]) + 2 * np.sin(2 * np.pi * x[1])**2 <= 1.5
-
-    def simionescu_function(self, x):
-        """
-        Calcula la función Simionescu.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - float: Valor de la función evaluada en x.
-        """
-        return 0.1 * (x[0] * x[1])
-
-    def simionescu_function_restriction(self, x):
-        """
-        Verifica la restricción para la función Simionescu.
-
-        Parámetros:
-        - x (np.array): Vector de entrada de variables.
-
-        Retorna:
-        - bool: True si la restricción se cumple, False en caso contrario.
-        """
-        r_T = 1
-        r_S = 0.2
-        n = 8
-        angulo = np.arctan2(x[1], x[0]) 
-        cosine_term = np.cos(n * angulo)
-        op = (r_T + r_S * cosine_term) ** 2
-        return x[0]**2 + x[1]**2 - op
-
-    def get_function(self):
-        """
-        Obtiene la función especificada por 'name'.
-
-        Retorna:
-        - function: El objeto de la función.
-        
-        Lanza:
-        - ValueError: Si la función 'name' no está definida en la clase.
-        """
-        func = getattr(self, self.name.lower(), None)
-        if func is None:
-            raise ValueError(f"La función '{self.name}' no está definida en la clase.")
-        return func
-
-    def get_limitesup(self):
-        """
-        Obtiene el límite superior del espacio de búsqueda.
-
-        Retorna:
-        - float: Límite superior del espacio de búsqueda.
-        """
-        return self.limiteinf[0]
-    
-    def get_limiteinf(self):
-        """
-        Obtiene el límite inferior del espacio de búsqueda.
-
-        Retorna:
-        - float: Límite inferior del espacio de búsqueda.
-        """
-        return self.limitesup[1]
 **Ejemplo
 .. code-block:: python
     import numpy as np
