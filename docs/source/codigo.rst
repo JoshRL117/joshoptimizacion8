@@ -112,7 +112,7 @@ Clase funcion
 Clase objetive_funcion 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Esta es la clase heredada que se enfoca en funciones objetivo de prueba para el paquete
-.. code-block:: python 
+.. code-block:: python
     import numpy as np
     class objetive_function(funcion):
     """
@@ -641,7 +641,7 @@ Clase univariablefunction
 
 q
 
-.. code-block::python
+.. code-block:: python
     import numpy as np
     from .univariablefunction import univariablefunction
     funciones = univariablefunction("funcion1")
@@ -984,7 +984,7 @@ Método de biseccion
 **Ejemplo**
 
 
-.. code-block::python
+.. code-block:: python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.fibonacci import fibonacci
 
@@ -1073,7 +1073,7 @@ Método de busqueda dorada
 **Ejemplo**
 
 
-.. code-block::python
+.. code-block:: python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.golden import goldensearch
 
@@ -1087,7 +1087,7 @@ Método de busqueda dorada
     print(f"El mínimo aproximado de la función es: {resultado}")
 Método de intervalos a la mitad
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block::python
+.. code-block:: python
     class interval(by_regions_elimination):
         def __init__(self, x_inicial, x_limite, f, epsilon):
             """
@@ -1218,7 +1218,7 @@ Método de intervalos a la mitad
 **Ejemplo**
 
 
-.. code-block::python
+.. code-block:: python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.interval import interval
 
@@ -1232,7 +1232,7 @@ Método de intervalos a la mitad
     print(f"El mínimo aproximado de la función es: {resultado}")
 Método de newton -raphson 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block::python
+.. code-block:: python
     class newton_raphson(derivative_methods):
         def __init__(self, x_inicial, xlimite=1, f=None, epsilon=0.1, iter=100):
             """
@@ -1306,7 +1306,7 @@ Método de newton -raphson
 **Ejemplo**
 
 
-.. code-block::python
+.. code-block:: python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.newtonraphson import newton_raphson
 
@@ -1320,7 +1320,7 @@ Método de newton -raphson
     print(f"El mínimo aproximado de la función es: {resultado}")
 Método de la secante
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block::python
+.. code-block:: python
     class secante(derivative_methods):
         def __init__(self, x_inicial, xlimite, f, epsilon, iter=100):
             """
@@ -1418,7 +1418,7 @@ Método de la secante
 
 **Ejemplo**
 
-.. code-block::python
+.. code-block:: python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.secante import secante
 
@@ -1435,7 +1435,7 @@ Métodos Multivariables
 Método de cauchy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: python 
+.. code-block:: python
     from ..baseopt import gradient_methods, optimizador_univariable
     from ..metodos_univariables import goldensearch, fibonacci, interval, biseccion, secante
     import numpy as np
@@ -1685,7 +1685,7 @@ Método de cauchy
 
 
 **Ejemplo**
-.. code-block::python
+.. code-block:: python
     import numpy as np
     from optimizador_joshua_8.metodos_multivariables.cauchy import cauchy
     from optimizador_joshua_8.funciones.objetivo import objetive_function
@@ -1962,7 +1962,7 @@ Método de fletcher-reeves
         return xk
 
 **Ejemplo**
-.. code-block::python
+.. code-block:: python
     import numpy as np
     from optimizador_joshua_8.metodos_multivariables.cauchy import cauchy
     from optimizador_joshua_8.funciones.objetivo import objetive_function
@@ -2095,7 +2095,7 @@ Método de Hooke-Jeeves
         return x_best_new
 
 **Ejemplo**
-.. code-block::python
+.. code-block:: python
     from optimizador_joshua_8.metodos_multivariables.hookejeeves import hooke_jeeves
     from optimizador_joshua_8.funciones.objetivo import objetive_function
     #Hookejeeves 
@@ -2292,7 +2292,7 @@ Método de Neldear-Mead
         return simplex[best]
 
 **Ejemplo**
-.. code-block::python
+.. code-block:: python
     from optimizador_joshua_8.metodos_multivariables.neldermead import neldermead
     from optimizador_joshua_8.funciones.objetivo import objetive_function
     func_name = "rosenbrock"
@@ -2542,7 +2542,7 @@ Método de newton basado en gradiente
         return xk
 
 **Ejemplo**
-.. code-block::python
+.. code-block:: python
     import numpy as np
     from optimizador_joshua_8.metodos_multivariables.newtonmethod import newton
     from optimizador_joshua_8.funciones.objetivo import objetive_function
@@ -2608,7 +2608,7 @@ Método de caminata aleatoria
 
 
 **Ejemplo**
-.. code-block::python
+.. code-block:: python
     import numpy as np
     from optimizador_joshua_8.metodos_multivariables.randomwalk import random_walk
     from optimizador_joshua_8.funciones.objetivo import objetive_function
