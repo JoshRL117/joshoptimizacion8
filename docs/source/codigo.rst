@@ -111,6 +111,7 @@ Clase funcion
 
 Clase objetive_funcion 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Esta es la clase heredada que se enfoca en funciones objetivo de prueba para el paquete
 .. code-block:: python 
     import numpy as np
     class objetive_function(funcion):
