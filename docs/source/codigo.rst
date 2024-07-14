@@ -2580,13 +2580,16 @@ Método de caminata aleatoria
 Implentación de funciones del usuario
 ======================================
 .. code-block:: python
-    def funcion_ejemplo(x)
-    """
-    Para la utilizacion de los métodos multivariables, se requiere un diseño de funcion donde solo reciba X.
-    Esto se debe al uso de los np.array brindados por la bibloteca numpy, si el diseño de la funcion no coincide con el moestrado aqui, los metodos marcaran error.
+    def funcion_ejemplo(x):
+        """
+        Para la utilización de los métodos multivariables, se requiere un diseño de función donde solo reciba x.
+        Esto se debe al uso de los np.array brindados por la biblioteca numpy; si el diseño de la función no coincide con el mostrado aquí, los métodos marcarán error.
 
-    Parámetros:
-    - x: Lista de valores de variables.
-    """
-    return (x[0] - 2) ** 2 + (x[1] + 3) ** 2 + 5
+        Parámetros:
+        - x: np.array o lista de valores de variables.
+
+        Retorna:
+        - float: Valor de la función evaluada en x.
+        """
+        return (x[0] - 2) ** 2 + (x[1] + 3) ** 2 + 5
 
