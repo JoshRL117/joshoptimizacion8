@@ -309,6 +309,7 @@ Clase restriction_functions
             simionescu_function
             simionescu_function_restriction
             """
+
         def rosenbrock_constrained_cubic_line(self, x):
             """
             Calcula la función Rosenbrock con restricción de línea cúbica.
@@ -332,7 +333,7 @@ Clase restriction_functions
             - bool: True si la restricción se cumple, False en caso contrario.
             """
             return (((x[0] - 1)**3 - x[1] + 1)) >= 0 and (x[0] + x[1] - 2) <= 0
-            
+
         def rosenbrock_constrained_disk(self, x):
             """
             Calcula la función Rosenbrock con restricción de disco.
@@ -494,7 +495,8 @@ Clase restriction_functions
             - float: Límite inferior del espacio de búsqueda.
             """
             return self.limitesup[1]
-**Ejemplo
+
+**Ejemplo**
 .. code-block:: python
     import numpy as np
     from .restriction_functions import restriction_functions
@@ -517,88 +519,88 @@ Clase univariablefunction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: python
     class univariablefunction(funcion):
-    def __init__(self, name, espaciobussqueda: np.array=[0,0]):
-        super().__init__(name, espaciobussqueda)
-    
-    def funcion1(self, x):
-        """
-        Calcula la función 1.
-
-        Parámetros:
-        - x (float): Valor de entrada para la función.
-
-        Retorna:
-        - float: Valor de la función evaluada en x.
-        """
-        self._validate_input(x)
-        return (x**2) + (54/x)
-
-    def funcion2(self, x):
-        """
-        Calcula la función 2.
-
-        Parámetros:
-        - x (float): Valor de entrada para la función.
-
-        Retorna:
-        - float: Valor de la función evaluada en x.
-        """
-        self._validate_input(x)
-        return (x**3) + (2*x) - 3
-
-    def funcion3(self, x):
-        """
-        Calcula la función 3.
-
-        Parámetros:
-        - x (float): Valor de entrada para la función.
-
-        Retorna:
-        - float: Valor de la función evaluada en x.
-        """
-        self._validate_input(x)
-        return (x**4) + (x**2) - 33
-
-    def funcion4(self, x):
-        """
-        Calcula la función 4.
-
-        Parámetros:
-        - x (float): Valor de entrada para la función.
-
-        Retorna:
-        - float: Valor de la función evaluada en x.
-        """
-        self._validate_input(x)
-        return (3 * (x**4)) - (8 * (x**3)) - (6 * (x**2)) + 12 * x
-
-    def _validate_input(self, x):
-        """
-        Valida que x sea un número escalar.
-
-        Lanza:
-        - ValueError: Si x es una lista, tupla, conjunto o arreglo.
-        """
-        if isinstance(x, (list, tuple, set, np.ndarray)):
-            raise ValueError("x no debe ser una lista, tupla o arreglo. Debe ser un número escalar.")
-
-    def get_function(self):
-        """
-        Obtiene la función especificada por 'name'.
-
-        Retorna:
-        - function: El objeto de la función.
+        def __init__(self, name, espaciobussqueda: np.array=[0,0]):
+            super().__init__(name, espaciobussqueda)
         
-        Lanza:
-        - ValueError: Si la función 'name' no está definida en la clase.
-        """
-        func = getattr(self, self.name.lower(), None)
-        if func is None:
-            raise ValueError(f"La función '{self.name}' no está definida en la clase.")
-        return func
+        def funcion1(self, x):
+            """
+            Calcula la función 1.
+
+            Parámetros:
+            - x (float): Valor de entrada para la función.
+
+            Retorna:
+            - float: Valor de la función evaluada en x.
+            """
+            self._validate_input(x)
+            return (x**2) + (54/x)
+
+        def funcion2(self, x):
+            """
+            Calcula la función 2.
+
+            Parámetros:
+            - x (float): Valor de entrada para la función.
+
+            Retorna:
+            - float: Valor de la función evaluada en x.
+            """
+            self._validate_input(x)
+            return (x**3) + (2*x) - 3
+
+        def funcion3(self, x):
+            """
+            Calcula la función 3.
+
+            Parámetros:
+            - x (float): Valor de entrada para la función.
+
+            Retorna:
+            - float: Valor de la función evaluada en x.
+            """
+            self._validate_input(x)
+            return (x**4) + (x**2) - 33
+
+        def funcion4(self, x):
+            """
+            Calcula la función 4.
+
+            Parámetros:
+            - x (float): Valor de entrada para la función.
+
+            Retorna:
+            - float: Valor de la función evaluada en x.
+            """
+            self._validate_input(x)
+            return (3 * (x**4)) - (8 * (x**3)) - (6 * (x**2)) + 12 * x
+
+        def _validate_input(self, x):
+            """
+            Valida que x sea un número escalar.
+
+            Lanza:
+            - ValueError: Si x es una lista, tupla, conjunto o arreglo.
+            """
+            if isinstance(x, (list, tuple, set, np.ndarray)):
+                raise ValueError("x no debe ser una lista, tupla o arreglo. Debe ser un número escalar.")
+
+        def get_function(self):
+            """
+            Obtiene la función especificada por 'name'.
+
+            Retorna:
+            - function: El objeto de la función.
+            
+            Lanza:
+            - ValueError: Si la función 'name' no está definida en la clase.
+            """
+            func = getattr(self, self.name.lower(), None)
+            if func is None:
+                raise ValueError(f"La función '{self.name}' no está definida en la clase.")
+            return func
 
 
-q
+
 
 .. code-block:: python
     import numpy as np
