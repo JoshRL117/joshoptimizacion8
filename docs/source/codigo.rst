@@ -290,6 +290,7 @@ Esta es la clase heredada que se enfoca en funciones objetivo de prueba para el 
     
 Clase restriction_functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Esta es la clase hereada enfocada a las funciones con restricciones
 .. code-block:: python
     class restriction_functions(funcion):
         def __init__(self, name, espaciobusqueda: np.array):
@@ -2592,4 +2593,5 @@ Implentación de funciones del usuario
         - float: Valor de la función evaluada en x.
         """
         return (x[0] - 2) ** 2 + (x[1] + 3) ** 2 + 5
+
 
