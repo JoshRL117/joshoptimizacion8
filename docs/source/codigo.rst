@@ -289,13 +289,13 @@ Esta es la clase heredada que se enfoca en funciones objetivo de prueba para el 
     print(f"Valor de la función {func_name} en [3, 2]:", resultado)
     
 Clase restriction_functions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+============================
 Esta es la clase heredada enfocada a las funciones con restricciones.
 
 .. code-block:: python
     class restriction_functions(funcion):
-        def __init__(self, name, search_space: np.array):
-            super().__init__(name, search_space)
+        def __init__(self, name, espaciobusqueda: np.array):
+            super().__init__(name, espaciobusqueda)
 
         def rosenbrock_constrained_cubic_line(self, x):
             return np.array([(1 - x[0])**2 + 100 * (x[1] - (x[0]**2))**2])
@@ -310,7 +310,9 @@ Esta es la clase heredada enfocada a las funciones con restricciones.
             return (x[0]**2 + x[1]**2)
 
         def mishras_bird_constrained(self, x):
-            return np.sin(x[1]) * np.exp((1 - np.cos(x[0]))**2) + np.cos(x[0]) * np.exp((1 - np.sin(x[1]))**2) + (x[0] - x[1])**2
+            return (np.sin(x[1]) * np.exp((1 - np.cos(x[0]))**2) +
+                    np.cos(x[0]) * np.exp((1 - np.sin(x[1]))**2) +
+                    (x[0] - x[1])**2)
 
         def mishras_bird_constrained_restriction(self, x):
             return (x[0] + 5)**2 + (x[1] + 5)**2 < 25
@@ -321,11 +323,14 @@ Esta es la clase heredada enfocada a las funciones con restricciones.
         def townsend_function_modified_restriction(self, x):
             t = np.arctan2(x[1], x[0])
             op1 = x[0]**2 + x[1]**2
-            op2 = (2 * np.cos(t) - 0.5 * np.cos(2 * t) - 0.25 * np.cos(3 * t) - 0.125 * np.cos(4 * t))**2 + (2 * np.sin(t))**2
+            op2 = (2 * np.cos(t) - 0.5 * np.cos(2 * t) -
+                    0.25 * np.cos(3 * t) - 0.125 * np.cos(4 * t))**2 + (2 * np.sin(t))**2
             return op1 < op2
 
         def gomez_levy_function_modified(self, x):
-            return 4 * x[0]**2 - 2.1 * x[0]**4 + (1 / 3) * x[0]**6 + x[0] * x[1] - 4 * x[1]**2 + 4 * x[1]**4
+            return (4 * x[0]**2 - 2.1 * x[0]**4 +
+                    (1 / 3) * x[0]**6 + x[0] * x[1] -
+                    4 * x[1]**2 + 4 * x[1]**4)
 
         def gomez_levy_function_modified_restriction(self, x):
             return -np.sin(4 * np.pi * x[0]) + 2 * np.sin(2 * np.pi * x[1])**2 <= 1.5
@@ -337,8 +342,8 @@ Esta es la clase heredada enfocada a las funciones con restricciones.
             r_T = 1
             r_S = 0.2
             n = 8
-            angle = np.arctan2(x[1], x[0]) 
-            cosine_term = np.cos(n * angle)
+            angulo = np.arctan2(x[1], x[0])
+            cosine_term = np.cos(n * angulo)
             op = (r_T + r_S * cosine_term) ** 2
             return x[0]**2 + x[1]**2 - op
 
@@ -350,7 +355,7 @@ Esta es la clase heredada enfocada a las funciones con restricciones.
 
         def get_limitesup(self):
             return self.limiteinf[0]
-        
+
         def get_limiteinf(self):
             return self.limitesup[1]
 
