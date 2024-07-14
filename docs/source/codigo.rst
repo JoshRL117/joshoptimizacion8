@@ -2621,7 +2621,7 @@ Método de caminata aleatoria
     print("Resultado del método Newton:", rw.optimize())
 
 Implentación de funciones del usuario
-----------------------------------
+======================================
 .. code-block:: python
     def funcion_ejemplo(x)
     """
