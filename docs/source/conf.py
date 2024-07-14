@@ -3,11 +3,11 @@
 # -- Project information
 
 project = 'Proyecto Final Optimizacion '
-copyright = '2024, Cristopher Ruiz'
-author = 'Critopher Alejandro Ruiz Bouchez'
+copyright = '2024, Joshua Rodriguez'
+author = 'Joshua Rodriguez Lopez'
 
 release = '0.1'
-version = '0.1.0'
+version = '0.1'
 
 # -- General configuration
 

@@ -2,10 +2,12 @@
 
 Clase funciones
 ======================================
+Esta es la clase principal de las fuciones de prueba para este paquete
 
 Clase funcion
 ----------------------------------
-.. code-block:: python 
+.. code-block:: python
+
     class funcion:
     """
     Clase base para definir una función para ser utilizada eb los métodos de optimización. Es la clase padre de las funciones
@@ -305,7 +307,9 @@ Clase objetive_funcion
             float: Límite inferior del espacio de búsqueda.
         """
         return self.limiteinf[0]
-**Ejemplo**
+
+
+
 .. code-block:: python
     import numpy as np
     from optimizador_joshua_8.funciones.objetivo import objetive_function
@@ -530,9 +534,7 @@ Clase restriction_functions
         - float: Límite inferior del espacio de búsqueda.
         """
         return self.limitesup[1]
-
-
-**Ejemplo**
+O
 .. code-block:: python
     import numpy as np
     from .restriction_functions import restriction_functions
@@ -635,7 +637,9 @@ Clase univariablefunction
             raise ValueError(f"La función '{self.name}' no está definida en la clase.")
         return func
 
-**Ejemplo**
+
+q
+
 .. code-block::python
     import numpy as np
     from .univariablefunction import univariablefunction
@@ -862,7 +866,11 @@ Método de biseccion
                 z = (x2 + x1) / 2
 
         return (x1 + x2) / 2
+
+
 **Ejemplo**
+
+
 .. code-block:: python
     from ..metodos_univariables import biseccion
     import numpy as np
@@ -970,7 +978,11 @@ Método de biseccion
             k += 1
         return (a + b) / 2
 
+
+
 **Ejemplo**
+
+
 .. code-block::python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.fibonacci import fibonacci
@@ -1055,7 +1067,11 @@ Método de busqueda dorada
             Lw = bw - aw
         return (self.w_to_x(aw, a, b) + self.w_to_x(bw, a, b)) / 2
 
+
+
 **Ejemplo**
+
+
 .. code-block::python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.golden import goldensearch
@@ -1196,7 +1212,11 @@ Método de intervalos a la mitad
                     endflag = self.intervalstep5(a, b)
             return xm
 
+
+
 **Ejemplo**
+
+
 .. code-block::python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.interval import interval
@@ -1280,7 +1300,11 @@ Método de newton -raphson
             
             return xsig
 
+
+
 **Ejemplo**
+
+
 .. code-block::python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.newtonraphson import newton_raphson
@@ -1389,7 +1413,10 @@ Método de la secante
                     z = self.calculozensecante(x2, x1)
             
             return (x1 + x2) / 2
+
+
 **Ejemplo**
+
 .. code-block::python
     from optimizador_joshua_8.metodos_univariables.univariablefunction import univariablefunction
     from optimizador_joshua_8.metodos_univariables.secante import secante
@@ -1652,6 +1679,9 @@ Método de cauchy
         
         print(f"Iteraciones totales: {k}")
         return xk
+
+
+
 
 **Ejemplo**
 .. code-block::python
