@@ -1,6 +1,6 @@
 .. _codigo:
 
-Clase funciones
+Paquete optimizacion Joshua
 ======================================
 Esta es la clase principal de las fuciones de prueba para este paquete
 
@@ -310,8 +310,10 @@ Esta es la clase heredada que se enfoca en funciones objetivo de prueba para el 
         return self.limiteinf[0]
 
 
+**Ejemplo**
 
 .. code-block:: python
+
     import numpy as np
     from optimizador_joshua_8.funciones.objetivo import objetive_function
 
