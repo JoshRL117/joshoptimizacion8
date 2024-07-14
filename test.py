@@ -12,7 +12,7 @@ from optimizador_joshua_8.metodos_multivariables.fletcherreeves import fletcher_
 from optimizador_joshua_8.metodos_multivariables.hookejeeves import hooke_jeeves
 from optimizador_joshua_8.funciones.objetivo import objetive_function
 from optimizador_joshua_8.metodos_multivariables.neldermead import neldermead
-
+from optimizador_joshua_8.metodos_multivariables.randomwalk import random_walk
 # Definir el nombre de la función objetivo y el espacio de búsqueda
 func_name = "himmelblau"
 espaciobusqueda = np.array([[0, 0], [1, 1]])
