@@ -291,211 +291,211 @@ Esta es la clase heredada que se enfoca en funciones objetivo de prueba para el 
 Clase restriction_functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Esta es la clase hereada enfocada a las funciones con restricciones
-.. code-block::python
-    class restriction_functions(funcion):
-            def __init__(self, name, espaciobusqueda: np.array):
-                super().__init__(name, espaciobusqueda)
-                """
-                Estos son los nombres de las funciones que se debe poner en name para llamarlas
-                rosenbrock_constrained_cubic_line
-                rosenbrock_constrained_cubic_line_restriction
-                rosenbrock_constrained_disk
-                rosenbrock_constrained_disk_restriction
-                mishras_bird_constrained
-                mishras_bird_constrained_restriction
-                townsend_function_modified
-                townsend_function_modified_restriction
-                gomez_levy_function_modified
-                gomez_levy_function_modified_restriction
-                simionescu_function
-                simionescu_function_restriction
-                """
+class restriction_functions(funcion):
+    def __init__(self, name, search_space: np.array):
+        super().__init__(name, search_space)
+        """
+        These are the names of the functions that should be used in 'name' to call them:
+        - rosenbrock_constrained_cubic_line
+        - rosenbrock_constrained_cubic_line_restriction
+        - rosenbrock_constrained_disk
+        - rosenbrock_constrained_disk_restriction
+        - mishras_bird_constrained
+        - mishras_bird_constrained_restriction
+        - townsend_function_modified
+        - townsend_function_modified_restriction
+        - gomez_levy_function_modified
+        - gomez_levy_function_modified_restriction
+        - simionescu_function
+        - simionescu_function_restriction
+        """
 
-            def rosenbrock_constrained_cubic_line(self, x):
-                """
-                Calcula la función Rosenbrock con restricción de línea cúbica.
+    def rosenbrock_constrained_cubic_line(self, x):
+        """
+        Calculates the Rosenbrock function with cubic line constraint.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - np.array: Valor de la función evaluada en x.
-                """
-                return np.array([(1 - x[0])**2 + 100 * (x[1] - (x[0]**2))**2])
+        Returns:
+        - np.array: Value of the function evaluated at x.
+        """
+        return np.array([(1 - x[0])**2 + 100 * (x[1] - (x[0]**2))**2])
 
-            def rosenbrock_constrained_cubic_line_restriction(self, x):
-                """
-                Verifica la restricción para la función Rosenbrock con restricción de línea cúbica.
+    def rosenbrock_constrained_cubic_line_restriction(self, x):
+        """
+        Checks the constraint for the Rosenbrock function with cubic line constraint.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - bool: True si la restricción se cumple, False en caso contrario.
-                """
-                return (((x[0] - 1)**3 - x[1] + 1)) >= 0 and (x[0] + x[1] - 2) <= 0
+        Returns:
+        - bool: True if the constraint is satisfied, False otherwise.
+        """
+        return (((x[0] - 1)**3 - x[1] + 1)) >= 0 and (x[0] + x[1] - 2) <= 0
 
-            def rosenbrock_constrained_disk(self, x):
-                """
-                Calcula la función Rosenbrock con restricción de disco.
+    def rosenbrock_constrained_disk(self, x):
+        """
+        Calculates the Rosenbrock function with disk constraint.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - np.array: Valor de la función evaluada en x.
-                """
-                return np.array([(1 - x[0])**2 + 100 * (x[1] - (x[0]**2))**2])
+        Returns:
+        - np.array: Value of the function evaluated at x.
+        """
+        return np.array([(1 - x[0])**2 + 100 * (x[1] - (x[0]**2))**2])
 
-            def rosenbrock_constrained_disk_restriction(self, x):
-                """
-                Verifica la restricción para la función Rosenbrock con restricción de disco.
+    def rosenbrock_constrained_disk_restriction(self, x):
+        """
+        Checks the constraint for the Rosenbrock function with disk constraint.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - bool: True si la restricción se cumple, False en caso contrario.
-                """
-                return (x[0]**2 + x[1]**2)
+        Returns:
+        - bool: True if the constraint is satisfied, False otherwise.
+        """
+        return (x[0]**2 + x[1]**2)
 
-            def mishras_bird_constrained(self, x):
-                """
-                Calcula la función de Mishra's Bird con restricción.
+    def mishras_bird_constrained(self, x):
+        """
+        Calculates Mishra's Bird function with constraint.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - float: Valor de la función evaluada en x.
-                """
-                return np.sin(x[1]) * np.exp((1 - np.cos(x[0]))**2) + np.cos(x[0]) * np.exp((1 - np.sin(x[1]))**2) + (x[0] - x[1])**2
+        Returns:
+        - float: Value of the function evaluated at x.
+        """
+        return np.sin(x[1]) * np.exp((1 - np.cos(x[0]))**2) + np.cos(x[0]) * np.exp((1 - np.sin(x[1]))**2) + (x[0] - x[1])**2
 
-            def mishras_bird_constrained_restriction(self, x):
-                """
-                Verifica la restricción para la función de Mishra's Bird con restricción.
+    def mishras_bird_constrained_restriction(self, x):
+        """
+        Checks the constraint for Mishra's Bird function with constraint.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - bool: True si la restricción se cumple, False en caso contrario.
-                """
-                return (x[0] + 5)**2 + (x[1] + 5)**2 < 25
+        Returns:
+        - bool: True if the constraint is satisfied, False otherwise.
+        """
+        return (x[0] + 5)**2 + (x[1] + 5)**2 < 25
 
-            def townsend_function_modified(self, x):
-                """
-                Calcula la función Townsend modificada.
+    def townsend_function_modified(self, x):
+        """
+        Calculates the modified Townsend function.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - float: Valor de la función evaluada en x.
-                """
-                return -(np.cos((x[0] - 0.1) * x[1]))**2 - x[0] * np.sin(3 * x[0] + x[1])
+        Returns:
+        - float: Value of the function evaluated at x.
+        """
+        return -(np.cos((x[0] - 0.1) * x[1]))**2 - x[0] * np.sin(3 * x[0] + x[1])
 
-            def townsend_function_modified_restriction(self, x):
-                """
-                Verifica la restricción para la función Townsend modificada.
+    def townsend_function_modified_restriction(self, x):
+        """
+        Checks the constraint for the modified Townsend function.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - bool: True si la restricción se cumple, False en caso contrario.
-                """
-                t = np.arctan2(x[1], x[0])
-                op1 = x[0]**2 + x[1]**2
-                op2 = (2 * np.cos(t) - 0.5 * np.cos(2 * t) - 0.25 * np.cos(3 * t) - 0.125 * np.cos(4 * t))**2 + (2 * np.sin(t))**2
-                return op1 < op2
+        Returns:
+        - bool: True if the constraint is satisfied, False otherwise.
+        """
+        t = np.arctan2(x[1], x[0])
+        op1 = x[0]**2 + x[1]**2
+        op2 = (2 * np.cos(t) - 0.5 * np.cos(2 * t) - 0.25 * np.cos(3 * t) - 0.125 * np.cos(4 * t))**2 + (2 * np.sin(t))**2
+        return op1 < op2
 
-            def gomez_levy_function_modified(self, x):
-                """
-                Calcula la función Gomez-Levy modificada.
+    def gomez_levy_function_modified(self, x):
+        """
+        Calculates the modified Gomez-Levy function.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - float: Valor de la función evaluada en x.
-                """
-                return 4 * x[0]**2 - 2.1 * x[0]**4 + (1 / 3) * x[0]**6 + x[0] * x[1] - 4 * x[1]**2 + 4 * x[1]**4
+        Returns:
+        - float: Value of the function evaluated at x.
+        """
+        return 4 * x[0]**2 - 2.1 * x[0]**4 + (1 / 3) * x[0]**6 + x[0] * x[1] - 4 * x[1]**2 + 4 * x[1]**4
 
-            def gomez_levy_function_modified_restriction(self, x):
-                """
-                Verifica la restricción para la función Gomez-Levy modificada.
+    def gomez_levy_function_modified_restriction(self, x):
+        """
+        Checks the constraint for the modified Gomez-Levy function.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - bool: True si la restricción se cumple, False en caso contrario.
-                """
-                return -np.sin(4 * np.pi * x[0]) + 2 * np.sin(2 * np.pi * x[1])**2 <= 1.5
+        Returns:
+        - bool: True if the constraint is satisfied, False otherwise.
+        """
+        return -np.sin(4 * np.pi * x[0]) + 2 * np.sin(2 * np.pi * x[1])**2 <= 1.5
 
-            def simionescu_function(self, x):
-                """
-                Calcula la función Simionescu.
+    def simionescu_function(self, x):
+        """
+        Calculates the Simionescu function.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - float: Valor de la función evaluada en x.
-                """
-                return 0.1 * (x[0] * x[1])
+        Returns:
+        - float: Value of the function evaluated at x.
+        """
+        return 0.1 * (x[0] * x[1])
 
-            def simionescu_function_restriction(self, x):
-                """
-                Verifica la restricción para la función Simionescu.
+    def simionescu_function_restriction(self, x):
+        """
+        Checks the constraint for the Simionescu function.
 
-                Parámetros:
-                - x (np.array): Vector de entrada de variables.
+        Parameters:
+        - x (np.array): Input variable vector.
 
-                Retorna:
-                - bool: True si la restricción se cumple, False en caso contrario.
-                """
-                r_T = 1
-                r_S = 0.2
-                n = 8
-                angulo = np.arctan2(x[1], x[0]) 
-                cosine_term = np.cos(n * angulo)
-                op = (r_T + r_S * cosine_term) ** 2
-                return x[0]**2 + x[1]**2 - op
+        Returns:
+        - bool: True if the constraint is satisfied, False otherwise.
+        """
+        r_T = 1
+        r_S = 0.2
+        n = 8
+        angle = np.arctan2(x[1], x[0]) 
+        cosine_term = np.cos(n * angle)
+        op = (r_T + r_S * cosine_term) ** 2
+        return x[0]**2 + x[1]**2 - op
 
-            def get_function(self):
-                """
-                Obtiene la función especificada por 'name'.
+    def get_function(self):
+        """
+        Obtains the function specified by 'name'.
 
-                Retorna:
-                - function: El objeto de la función.
-                
-                Lanza:
-                - ValueError: Si la función 'name' no está definida en la clase.
-                """
-                func = getattr(self, self.name.lower(), None)
-                if func is None:
-                    raise ValueError(f"La función '{self.name}' no está definida en la clase.")
-                return func
+        Returns:
+        - function: The function object.
+        
+        Raises:
+        - ValueError: If the function 'name' is not defined in the class.
+        """
+        func = getattr(self, self.name.lower(), None)
+        if func is None:
+            raise ValueError(f"The function '{self.name}' is not defined in the class.")
+        return func
 
-            def get_limitesup(self):
-                """
-                Obtiene el límite superior del espacio de búsqueda.
+    def get_limitesup(self):
+        """
+        Obtains the upper limit of the search space.
 
-                Retorna:
-                - float: Límite superior del espacio de búsqueda.
-                """
-                return self.limiteinf[0]
-            
-            def get_limiteinf(self):
-                """
-                Obtiene el límite inferior del espacio de búsqueda.
+        Returns:
+        - float: Upper limit of the search space.
+        """
+        return self.limiteinf[0]
+    
+    def get_limiteinf(self):
+        """
+        Obtains the lower limit of the search space.
 
-                Retorna:
-                - float: Límite inferior del espacio de búsqueda.
-                """
-                return self.limitesup[1]
+        Returns:
+        - float: Lower limit of the search space.
+        """
+        return self.limitesup[1]
+
 
 **Ejemplo**
 .. code-block:: python
@@ -519,86 +519,86 @@ Esta es la clase hereada enfocada a las funciones con restricciones
 Clase univariablefunction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: python
-    class univariablefunction(funcion):
-        def __init__(self, name, espaciobussqueda: np.array=[0,0]):
-            super().__init__(name, espaciobussqueda)
-        
-        def funcion1(self, x):
-            """
-            Calcula la función 1.
-
-            Parámetros:
-            - x (float): Valor de entrada para la función.
-
-            Retorna:
-            - float: Valor de la función evaluada en x.
-            """
-            self._validate_input(x)
-            return (x**2) + (54/x)
-
-        def funcion2(self, x):
-            """
-            Calcula la función 2.
-
-            Parámetros:
-            - x (float): Valor de entrada para la función.
-
-            Retorna:
-            - float: Valor de la función evaluada en x.
-            """
-            self._validate_input(x)
-            return (x**3) + (2*x) - 3
-
-        def funcion3(self, x):
-            """
-            Calcula la función 3.
-
-            Parámetros:
-            - x (float): Valor de entrada para la función.
-
-            Retorna:
-            - float: Valor de la función evaluada en x.
-            """
-            self._validate_input(x)
-            return (x**4) + (x**2) - 33
-
-        def funcion4(self, x):
-            """
-            Calcula la función 4.
-
-            Parámetros:
-            - x (float): Valor de entrada para la función.
-
-            Retorna:
-            - float: Valor de la función evaluada en x.
-            """
-            self._validate_input(x)
-            return (3 * (x**4)) - (8 * (x**3)) - (6 * (x**2)) + 12 * x
-
-        def _validate_input(self, x):
-            """
-            Valida que x sea un número escalar.
-
-            Lanza:
-            - ValueError: Si x es una lista, tupla, conjunto o arreglo.
-            """
-            if isinstance(x, (list, tuple, set, np.ndarray)):
-                raise ValueError("x no debe ser una lista, tupla o arreglo. Debe ser un número escalar.")
-
-        def get_function(self):
-            """
-            Obtiene la función especificada por 'name'.
-
-            Retorna:
-            - function: El objeto de la función.
+        class univariablefunction(funcion):
+            def __init__(self, name, espaciobussqueda: np.array=[0,0]):
+                super().__init__(name, espaciobussqueda)
             
-            Lanza:
-            - ValueError: Si la función 'name' no está definida en la clase.
-            """
-            func = getattr(self, self.name.lower(), None)
-            if func is None:
-                raise ValueError(f"La función '{self.name}' no está definida en la clase.")
-            return func
+            def funcion1(self, x):
+                """
+                Calcula la función 1.
+
+                Parámetros:
+                - x (float): Valor de entrada para la función.
+
+                Retorna:
+                - float: Valor de la función evaluada en x.
+                """
+                self._validate_input(x)
+                return (x**2) + (54/x)
+
+            def funcion2(self, x):
+                """
+                Calcula la función 2.
+
+                Parámetros:
+                - x (float): Valor de entrada para la función.
+
+                Retorna:
+                - float: Valor de la función evaluada en x.
+                """
+                self._validate_input(x)
+                return (x**3) + (2*x) - 3
+
+            def funcion3(self, x):
+                """
+                Calcula la función 3.
+
+                Parámetros:
+                - x (float): Valor de entrada para la función.
+
+                Retorna:
+                - float: Valor de la función evaluada en x.
+                """
+                self._validate_input(x)
+                return (x**4) + (x**2) - 33
+
+            def funcion4(self, x):
+                """
+                Calcula la función 4.
+
+                Parámetros:
+                - x (float): Valor de entrada para la función.
+
+                Retorna:
+                - float: Valor de la función evaluada en x.
+                """
+                self._validate_input(x)
+                return (3 * (x**4)) - (8 * (x**3)) - (6 * (x**2)) + 12 * x
+
+            def _validate_input(self, x):
+                """
+                Valida que x sea un número escalar.
+
+                Lanza:
+                - ValueError: Si x es una lista, tupla, conjunto o arreglo.
+                """
+                if isinstance(x, (list, tuple, set, np.ndarray)):
+                    raise ValueError("x no debe ser una lista, tupla o arreglo. Debe ser un número escalar.")
+
+            def get_function(self):
+                """
+                Obtiene la función especificada por 'name'.
+
+                Retorna:
+                - function: El objeto de la función.
+                
+                Lanza:
+                - ValueError: Si la función 'name' no está definida en la clase.
+                """
+                func = getattr(self, self.name.lower(), None)
+                if func is None:
+                    raise ValueError(f"La función '{self.name}' no está definida en la clase.")
+                return func
 .. code-block:: python
     import numpy as np
     from .univariablefunction import univariablefunction
